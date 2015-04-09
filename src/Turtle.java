@@ -12,9 +12,15 @@ public class Turtle {
 
     public void penDown(){}
 
-    public boolean isPenUp(){}
+    public boolean isPenUp(){
+        return true;
+    }
 
-    public int direction(){}
+    public int direction(){
+        return 0;
+    }
 
-    public Point location(){}
+    public Point location(){
+        return new Point();
+    }
 }
