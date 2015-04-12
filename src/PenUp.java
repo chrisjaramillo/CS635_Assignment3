@@ -4,7 +4,14 @@
 public class PenUp implements TurtleNode{
 
     @Override
-    public int evaluate() {
+    public int evaluate(Turtle values)
+    {
+        values.penUp();
         return 0;
+    }
+
+    @Override
+    public void accept(TurtleGenerator generator) {
+        generator.visitPenUpNode(this);
     }
 }

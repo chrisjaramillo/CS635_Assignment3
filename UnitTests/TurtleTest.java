@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.geom.Point2D;
 
 import static org.junit.Assert.*;
 
@@ -26,9 +26,9 @@ public class TurtleTest {
     public void testMove() throws Exception {
         System.out.println("-- testMove --");
         Turtle t = new Turtle();
-        Point p = t.location();
+        Point2D p = t.location();
         t.move(1);
-        Point p2 = t.location();
+        Point2D p2 = t.location();
         assertNotEquals("Starting point and end point are equal after move.", p, p2);
     }
 
@@ -36,11 +36,15 @@ public class TurtleTest {
     public void testTurn() throws Exception {
         System.out.println("-- testTurn --");
         Turtle t = new Turtle();
+        assertEquals("Starting direction is not 0.", t.direction(), 0);
+        t.turn(10);
+        assertEquals("End direction is not 10 after turn.", t.direction(), 10);
     }
 
     @org.junit.Test
     public void testPenUp() throws Exception {
         System.out.println("-- testPenUp --");
+        Turtle t = new Turtle();
 
     }
 
@@ -59,6 +63,7 @@ public class TurtleTest {
     @org.junit.Test
     public void testDirection() throws Exception {
         System.out.println("-- testDirection --");
+
 
     }
 

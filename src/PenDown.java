@@ -3,7 +3,14 @@
  */
 public class PenDown implements TurtleNode{
     @Override
-    public int evaluate() {
+    public int evaluate(Turtle values)
+    {
+        values.penDown();
         return 0;
+    }
+
+    @Override
+    public void accept(TurtleGenerator generator) {
+        generator.visitPenDownNode(this);
     }
 }
