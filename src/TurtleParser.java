@@ -6,10 +6,11 @@ import java.util.List;
  * Created by cxj8923 on 4/11/15.
  */
 public class TurtleParser {
+
     public List<TurtleNode> parse(String filename) throws FileNotFoundException, IOException
     {
         BufferedReader programFile = new BufferedReader(new FileReader(filename));
-        List<TurtleNode> parsedProgram = new LinkedList<>();
+        List<TurtleNode> parsedProgram = new LinkedList<TurtleNode>();
         String line;
         while((line = programFile.readLine()) != null)
         {

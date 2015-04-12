@@ -18,7 +18,10 @@ public class Turtle {
         penDown = true;
         location = new Point2D.Double(0.0, 0.0);
     }
-    public void move(int distance){}
+    public void move(int distance)
+    {
+
+    }
 
     public void unmove(int distance){}
 
