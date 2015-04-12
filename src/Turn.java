@@ -8,6 +8,7 @@ public class Turn implements TurtleNode {
     {
         degrees = aNode;
     }
+
     @Override
     public int evaluate(Turtle values)
     {
@@ -17,9 +18,13 @@ public class Turn implements TurtleNode {
     }
 
     @Override
-    public void accept(TurtleGenerator generator) {
+    public void accept(TurtleGenerator generator)
+    {
         generator.visitTurnNode(this);
     }
 
 
+    public TurtleNode getDegrees() {
+        return degrees;
+    }
 }

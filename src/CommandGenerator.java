@@ -1,16 +1,20 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by cxj8923 on 4/11/15.
  */
 public class CommandGenerator implements TurtleGenerator {
-    Turtle commandTurtle;
-    List<Command> commandList;
+    private Turtle commandTurtle;
+    private List<Command> commandList;
+    private HashMap<String, Integer> variables;
+
     public CommandGenerator(Turtle aTurtle)
     {
         commandTurtle = aTurtle;
         commandList = new ArrayList<Command>();
+        variables = new HashMap<String, Integer>();
     }
 
     public List<Command> visit(List<TurtleNode> nodeList)
@@ -23,45 +27,82 @@ public class CommandGenerator implements TurtleGenerator {
     }
 
     @Override
-    public void visitConstantNode(Constant aNode) {
+    public void visitConstantNode(Constant aNode)
+    {
 
     }
 
     @Override
-    public void visitLookupVariableNode(LookupVariable aNode) {
+    public void visitLookupVariableNode(LookupVariable aNode)
+    {
 
     }
 
     @Override
-    public void visitMoveNode(Move aNode) {
-        commandList.add(new MoveCommand(commandTurtle, aNode.evaluate(commandTurtle)));
-
+    public void visitMoveNode(Move aNode)
+    {
+        int distance = 0;
+        TurtleNode distanceNode = aNode.getDistance();
+        distance = getValue(distanceNode);
+        commandList.add(new MoveCommand(commandTurtle, distance));
     }
 
     @Override
-    public void visitPenDownNode(PenDown aNode) {
+    public void visitPenDownNode(PenDown aNode)
+    {
         commandList.add(new PenDownCommand(commandTurtle));
 
     }
 
     @Override
-    public void visitPenUpNode(PenUp aNode) {
+    public void visitPenUpNode(PenUp aNode)
+    {
         commandList.add(new PenUpCommand(commandTurtle));
     }
 
     @Override
-    public void visitRepeatNode(Repeat aNode) {
-        this.visit(aNode.getList());
+    public void visitRepeatNode(Repeat aNode)
+    {
+        int count = 0;
+        TurtleNode countNode = aNode.getRepetitions();
+        count = getValue(countNode);
+        for(int i=0; i<count; i++)
+        {
+            this.visit(aNode.getList());
+        }
+    }
+
+
+
+    @Override
+    public void visitTurnNode(Turn aNode)
+    {
+        int degrees = 0;
+        TurtleNode degreesNode = aNode.getDegrees();
+        degrees = getValue(degreesNode);
+        commandList.add(new TurnCommand(commandTurtle, degrees));
     }
 
     @Override
-    public void visitTurnNode(Turn aNode) {
-        commandList.add(new TurnCommand(commandTurtle, aNode.evaluate(commandTurtle)));
-
+    public void visitVariableNode(Variable aNode)
+    {
+        int value = 0;
+        TurtleNode valueNode = aNode.getValue();
+        value = getValue(valueNode);
+        variables.put(aNode.getName(), value);
     }
 
-    @Override
-    public void visitVariableNode(Variable aNode) {
-        aNode.evaluate(commandTurtle);
+    private int getValue(TurtleNode valueNode)
+    {
+        int value = 0;
+        if(valueNode instanceof  Constant)
+        {
+            value = ((Constant)valueNode).getValue();
+        }
+        else if(valueNode instanceof LookupVariable)
+        {
+            value = variables.get(((LookupVariable)valueNode).getVariableName());
+        }
+        return value;
     }
 }

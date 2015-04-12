@@ -1,16 +1,13 @@
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by cxj8923 on 4/11/15.
  */
 public class DistanceGenerator implements TurtleGenerator{
-    Turtle distanceTurtle;
-    int distance;
 
-    DistanceGenerator(Turtle aTurtle)
-    {
-        distanceTurtle = aTurtle;
-    }
+    int distance;
+    private HashMap<String, Integer> variables;
 
     public int visit(List<TurtleNode> nodeList)
     {
@@ -33,15 +30,7 @@ public class DistanceGenerator implements TurtleGenerator{
     @Override
     public void visitMoveNode(Move aNode) {
         TurtleNode distanceNode = aNode.getDistance();
-        if(distanceNode instanceof Constant)
-        {
-            distance += ((Constant)distanceNode).getValue();
-        }
-        else if(distanceNode instanceof LookupVariable)
-        {
-            distance += distanceTurtle.getVariable(((LookupVariable)distanceNode).getVariableName());
-        }
-        distance += aNode.evaluate(distanceTurtle);
+        distance += getValue(distanceNode);
     }
 
     @Override
@@ -60,19 +49,10 @@ public class DistanceGenerator implements TurtleGenerator{
         int count = 0;
         TurtleNode countNode;
         countNode = aNode.getRepetitions();
-        if(countNode instanceof  Constant)
-        {
-            count = ((Constant)countNode).getValue();
-        }
-        else if(countNode instanceof LookupVariable)
-        {
-            count = distanceTurtle.getVariable(((LookupVariable)countNode).getVariableName());
-        }
-        DistanceGenerator repeatGenerator;
+        count = getValue(countNode);
         for(int i=0; i<count; i++)
         {
-            repeatGenerator = new DistanceGenerator(distanceTurtle);
-            distance += repeatGenerator.visit(repeatNodes);
+            this.visit(repeatNodes);
         }
     }
 
@@ -85,14 +65,21 @@ public class DistanceGenerator implements TurtleGenerator{
     public void visitVariableNode(Variable aNode) {
         TurtleNode valueNode = aNode.getValue();
         int value = 0;
-        if(valueNode instanceof Constant)
+        value = getValue(valueNode);
+        variables.put(aNode.getName(),value);
+    }
+
+    private int getValue(TurtleNode valueNode)
+    {
+        int value = 0;
+        if(valueNode instanceof  Constant)
         {
             value = ((Constant)valueNode).getValue();
         }
         else if(valueNode instanceof LookupVariable)
         {
-            value = distanceTurtle.getVariable(((LookupVariable)valueNode).getVariableName());
+            value = variables.get(((LookupVariable) valueNode).getVariableName());
         }
-        distanceTurtle.setVariables(aNode.name, value);
+        return value;
     }
 }
