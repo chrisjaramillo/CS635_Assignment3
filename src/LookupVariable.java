@@ -17,4 +17,8 @@ public class LookupVariable implements TurtleNode {
     public void accept(TurtleGenerator generator) {
         generator.visitLookupVariableNode(this);
     }
+
+    public String getVariableName() {
+        return variableName;
+    }
 }

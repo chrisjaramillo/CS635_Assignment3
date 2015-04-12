@@ -60,7 +60,12 @@ public class TurtleParser {
         }
         else if(tokens[0].charAt(0) == '$')
         {
-            interpreterNode = new Variable(tokens[0], tokens[2]);
+            TurtleNode value;
+            if(tokens[2].charAt(0) == '$')
+                value = new LookupVariable(tokens[2]);
+            else
+                value = new Constant(tokens[2]);
+            interpreterNode = new Variable(tokens[0], value);
         }
         return interpreterNode;
     }

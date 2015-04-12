@@ -5,7 +5,7 @@ import java.util.List;
  * Created by cxj8923 on 4/10/15.
  */
 public class Repeat implements TurtleNode {
-    TurtleNode repetitions;
+    private TurtleNode repetitions;
     private List<TurtleNode> composite;
 
     Repeat(TurtleNode aNode)
@@ -44,5 +44,10 @@ public class Repeat implements TurtleNode {
 
     public List<TurtleNode> getList() {
         return composite;
+    }
+
+    public TurtleNode getRepetitions()
+    {
+        return repetitions;
     }
 }

@@ -20,4 +20,8 @@ public class Move implements TurtleNode{
         generator.visitMoveNode(this);
     }
 
+    public TurtleNode getDistance(){
+        return distance;
+    }
+
 }

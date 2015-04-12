@@ -2,7 +2,7 @@
  * Created by cxj8923 on 4/11/15.
  */
 public class Constant implements TurtleNode {
-    int value;
+    private int value;
 
     public Constant(String aValue)
     {
@@ -18,5 +18,9 @@ public class Constant implements TurtleNode {
     public void accept(TurtleGenerator aVisitor)
     {
         aVisitor.visitConstantNode(this);
+    }
+
+    public int getValue() {
+        return value;
     }
 }

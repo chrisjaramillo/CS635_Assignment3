@@ -3,15 +3,16 @@
  */
 public class Variable implements TurtleNode{
     String name;
-    int value;
-    Variable(String aName, String aValue)
+    TurtleNode valueNode;
+    Variable(String aName, TurtleNode aNode)
     {
         name = aName;
-        value = Integer.valueOf(aValue);
+        valueNode = aNode;
     }
     @Override
     public int evaluate(Turtle values)
     {
+        int value = valueNode.evaluate(values);
         values.setVariables(name, value);
         return 0;
     }
@@ -21,4 +22,11 @@ public class Variable implements TurtleNode{
         generator.visitVariableNode(this);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public TurtleNode getValue() {
+        return valueNode;
+    }
 }
