@@ -14,7 +14,7 @@ public class TurtleParser {
         String line;
         while((line = programFile.readLine()) != null)
         {
-            TurtleNode convertedLine = this.convertLine(line, programFile);
+            parsedProgram.add(this.convertLine(line, programFile));
         }
         return parsedProgram;
 

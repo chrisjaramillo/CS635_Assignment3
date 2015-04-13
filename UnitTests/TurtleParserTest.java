@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.ListIterator;
 
 import static org.junit.Assert.*;
 
@@ -13,13 +15,14 @@ import static org.junit.Assert.*;
 public class TurtleParserTest {
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws Exception
+    {
         PrintWriter writer = new PrintWriter("testParser.txt", "UTF-8");
         writer.println("$length = 10");
         writer.println("penDown");
         writer.println("move 10");
         writer.println("turn 90");
-        writer.println("penDown");
+        writer.println("penUp");
         writer.close();
 
         writer = new PrintWriter("testParser1.txt", "UTF-8");
@@ -29,14 +32,17 @@ public class TurtleParserTest {
         writer.close();
 
         writer = new PrintWriter("testParser2.txt", "UTF-8");
-        writer.println("$length = 10");
         writer.println("penDown");
-        writer.println("move $length");
+        writer.println("repeat 2");
+        writer.println("penDown");
+        writer.println("move 10");
+        writer.println("end");
         writer.close();
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() throws Exception
+    {
         File file = new File("testParser.txt");
         file.delete();
         file = new File("testParser1.txt");
@@ -46,7 +52,24 @@ public class TurtleParserTest {
     }
 
     @Test
-    public void testParse() throws Exception {
-
+    public void testParse() throws Exception
+    {
+        TurtleParser testParser = new TurtleParser();
+        List<TurtleNode> testList = testParser.parse("testParser.txt");
+        assertEquals("There are not 5 nodes", 5, testList.size());
+        ListIterator<TurtleNode> testIterator = testList.listIterator();
+        TurtleNode testNode = testIterator.next();
+        assertTrue(testNode instanceof Variable);
+        assertFalse(testNode instanceof Move);
+        assertEquals("Variable name is not $length", "$length", ((Variable) testNode).getName());
+        assertEquals("Variable value is not 10", 10, ((Variable)testNode).getValue());
+        testNode = testIterator.next();
+        assertTrue(testNode instanceof PenDown);
+        testNode = testIterator.next();
+        assertTrue(testNode instanceof Move);
+        testNode = testIterator.next();
+        assertTrue(testNode instanceof Turn);
+        testNode = testIterator.next();
+        assertTrue(testNode instanceof PenUp);
     }
 }
