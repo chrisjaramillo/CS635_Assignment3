@@ -11,7 +11,6 @@ public class TurtleTest {
     public void setUp() throws Exception
     {
         System.out.println("-- setUp --");
-
     }
 
     @org.junit.Test
