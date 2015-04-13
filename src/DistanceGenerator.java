@@ -2,9 +2,10 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by cxj8923 on 4/11/15.
+ * Created by Christopher Jaramillo on 4/11/15.
  */
-public class DistanceGenerator implements TurtleGenerator{
+public class DistanceGenerator implements TurtleGenerator
+{
 
     int distance;
     private HashMap<String, Integer> variables;
@@ -17,34 +18,41 @@ public class DistanceGenerator implements TurtleGenerator{
         }
         return distance;
     }
+
     @Override
-    public void visitConstantNode(Constant aNode) {
+    public void visitConstantNode(Constant aNode)
+    {
 
     }
 
     @Override
-    public void visitLookupVariableNode(LookupVariable aNode) {
+    public void visitLookupVariableNode(LookupVariable aNode)
+    {
 
     }
 
     @Override
-    public void visitMoveNode(Move aNode) {
+    public void visitMoveNode(Move aNode)
+    {
         TurtleNode distanceNode = aNode.getDistance();
         distance += getValue(distanceNode);
     }
 
     @Override
-    public void visitPenDownNode(PenDown aNode) {
+    public void visitPenDownNode(PenDown aNode)
+    {
 
     }
 
     @Override
-    public void visitPenUpNode(PenUp aNode) {
+    public void visitPenUpNode(PenUp aNode)
+    {
 
     }
 
     @Override
-    public void visitRepeatNode(Repeat aNode) {
+    public void visitRepeatNode(Repeat aNode)
+    {
         List<TurtleNode> repeatNodes = aNode.getList();
         int count = 0;
         TurtleNode countNode;
@@ -57,12 +65,14 @@ public class DistanceGenerator implements TurtleGenerator{
     }
 
     @Override
-    public void visitTurnNode(Turn aNode) {
+    public void visitTurnNode(Turn aNode)
+    {
 
     }
 
     @Override
-    public void visitVariableNode(Variable aNode) {
+    public void visitVariableNode(Variable aNode)
+    {
         TurtleNode valueNode = aNode.getValue();
         int value = 0;
         value = getValue(valueNode);

@@ -20,28 +20,48 @@ public class Turtle {
     }
     public void move(int distance)
     {
+        double radians = direction * Math.PI/180;
+        double deltaX = Math.cos(radians) * distance;
+        double deltaY = Math.sin(radians) * distance;
+        double newX = location.getX() + deltaX;
+        double newY = location.getY() + deltaY;
+        location.setLocation(newX,newY);
+    }
+
+    public void unmove(int distance)
+    {
 
     }
 
-    public void unmove(int distance){}
+    public void turn(int degrees)
+    {
+        direction += degrees;
+        direction = direction % 360;
+    }
 
-    public void turn(int degrees){}
+    public void penUp()
+    {
+        penDown = false;
+    }
 
-    public void penUp(){}
-
-    public void penDown(){}
+    public void penDown()
+    {
+        penDown = true;
+    }
 
     public boolean isPenUp()
     {
-        return true;
+        return !penDown;
     }
 
-    public int direction(){
-        return 0;
+    public int direction()
+    {
+        return direction;
     }
 
-    public Point2D location(){
-        return new Point2D.Double();
+    public Point2D location()
+    {
+        return location;
     }
 
     public void setVariables(String name, int value)

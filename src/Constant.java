@@ -1,5 +1,5 @@
 /**
- * Created by cxj8923 on 4/11/15.
+ * Created by Christopher Jaramillo on 4/11/15.
  */
 public class Constant implements TurtleNode {
     private int value;
@@ -22,5 +22,10 @@ public class Constant implements TurtleNode {
 
     public int getValue() {
         return value;
+    }
+
+    public String toString()
+    {
+        return String.valueOf(value);
     }
 }

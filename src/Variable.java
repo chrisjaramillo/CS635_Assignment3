@@ -29,4 +29,9 @@ public class Variable implements TurtleNode{
     public TurtleNode getValue() {
         return valueNode;
     }
+
+    @Override
+    public String toString() {
+        return name + " = " + valueNode.toString();
+    }
 }

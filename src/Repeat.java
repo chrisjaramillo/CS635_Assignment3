@@ -50,4 +50,17 @@ public class Repeat implements TurtleNode {
     {
         return repetitions;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuffer asString=new StringBuffer();
+        asString.append("repeat " + repetitions.toString() + "\n");
+        for(TurtleNode currentNode : composite)
+        {
+            asString.append("\t" + currentNode.toString() + "\n");
+        }
+        asString.append("end\n");
+        return asString.toString();
+    }
 }

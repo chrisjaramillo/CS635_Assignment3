@@ -14,7 +14,8 @@ public class MoveCommand implements Command {
         subject.move(distance);
     }
 
-    public void undo() {
+    public void undo()
+    {
         subject.unmove(distance);
 
     }

@@ -1,12 +1,15 @@
 /**
- * Created by cxj8923 on 4/11/15.
+ * Created by Christopher Jaramillo on 4/11/15.
  */
-public class LookupVariable implements TurtleNode {
+public class LookupVariable implements TurtleNode
+{
     String variableName;
+
     public LookupVariable(String aName)
     {
         variableName = aName;
     }
+
     @Override
     public int evaluate(Turtle values)
     {
@@ -14,11 +17,18 @@ public class LookupVariable implements TurtleNode {
     }
 
     @Override
-    public void accept(TurtleGenerator generator) {
+    public void accept(TurtleGenerator generator)
+    {
         generator.visitLookupVariableNode(this);
     }
 
-    public String getVariableName() {
+    public String getVariableName()
+    {
+        return variableName;
+    }
+
+    public String toString()
+    {
         return variableName;
     }
 }

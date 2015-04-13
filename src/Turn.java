@@ -27,4 +27,9 @@ public class Turn implements TurtleNode {
     public TurtleNode getDegrees() {
         return degrees;
     }
+
+    @Override
+    public String toString() {
+        return "turn " + degrees.toString();
+    }
 }

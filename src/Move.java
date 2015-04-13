@@ -1,12 +1,14 @@
 /**
- * Created by cxj8923 on 4/10/15.
+ * Created by Christopher Jaramillo on 4/10/15.
  */
 public class Move implements TurtleNode{
     TurtleNode distance;
+
     public Move(TurtleNode aNode)
     {
         distance = aNode;
     }
+
     @Override
     public int evaluate(Turtle values)
     {
@@ -16,12 +18,18 @@ public class Move implements TurtleNode{
     }
 
     @Override
-    public void accept(TurtleGenerator generator) {
+    public void accept(TurtleGenerator generator)
+    {
         generator.visitMoveNode(this);
     }
 
-    public TurtleNode getDistance(){
+    public TurtleNode getDistance()
+    {
         return distance;
     }
 
+    public String toString()
+    {
+        return "move " + distance.toString();
+    }
 }

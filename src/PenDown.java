@@ -13,4 +13,9 @@ public class PenDown implements TurtleNode{
     public void accept(TurtleGenerator generator) {
         generator.visitPenDownNode(this);
     }
+
+    public String toString()
+    {
+        return "penDown";
+    }
 }

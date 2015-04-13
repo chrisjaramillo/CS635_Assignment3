@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by cxj8923 on 4/11/15.
+ * Created by Christopher Jaramillo on 4/11/15.
  */
 public class CommandGenerator implements TurtleGenerator {
     private Turtle commandTurtle;
@@ -51,7 +51,6 @@ public class CommandGenerator implements TurtleGenerator {
     public void visitPenDownNode(PenDown aNode)
     {
         commandList.add(new PenDownCommand(commandTurtle));
-
     }
 
     @Override
@@ -71,8 +70,6 @@ public class CommandGenerator implements TurtleGenerator {
             this.visit(aNode.getList());
         }
     }
-
-
 
     @Override
     public void visitTurnNode(Turn aNode)

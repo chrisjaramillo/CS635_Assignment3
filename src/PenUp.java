@@ -14,4 +14,9 @@ public class PenUp implements TurtleNode{
     public void accept(TurtleGenerator generator) {
         generator.visitPenUpNode(this);
     }
+
+    @Override
+    public String toString() {
+        return "penUp";
+    }
 }
