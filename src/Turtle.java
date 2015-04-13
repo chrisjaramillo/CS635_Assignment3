@@ -37,6 +37,10 @@ public class Turtle {
     {
         direction += degrees;
         direction = direction % 360;
+        if(direction < 0)
+        {
+            direction += 360;
+        }
     }
 
     public void penUp()

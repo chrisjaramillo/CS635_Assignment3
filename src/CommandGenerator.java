@@ -69,12 +69,19 @@ public class CommandGenerator implements TurtleGenerator {
     @Override
     public void visitRepeatNode(Repeat aNode)
     {
-        int count = 0;
+        CommandGenerator repeatGenerator = new CommandGenerator(commandTurtle);
+        List<Command> repeatCommands = repeatGenerator.visit(aNode.getList());
         TurtleNode countNode = aNode.getRepetitions();
-        count = getValue(countNode);
-        for(int i=0; i<count; i++)
+        if(countNode instanceof Constant)
         {
-            this.visit(aNode.getList());
+            int count = 0;
+            count = ((Constant)countNode).getValue();
+            commandList.add(new RepeatConstantCommand(commandTurtle, count, repeatCommands));
+        }
+        else if(countNode instanceof LookupVariable)
+        {
+            String countVariable = ((LookupVariable)countNode).getVariableName();
+            commandList.add(new RepeatVariableCommand(commandTurtle, countVariable, repeatCommands));
         }
     }
 
@@ -84,7 +91,7 @@ public class CommandGenerator implements TurtleGenerator {
         int degrees = 0;
         TurtleNode degreesNode = aNode.getDegrees();
         degrees = getValue(degreesNode);
-        commandList.add(new TurnCommand(commandTurtle, degrees));
+        commandList.add(new TurnConstantCommand(commandTurtle, degrees));
     }
 
     @Override

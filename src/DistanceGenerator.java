@@ -54,11 +54,9 @@ public class DistanceGenerator implements TurtleGenerator
     public void visitRepeatNode(Repeat aNode)
     {
         List<TurtleNode> repeatNodes = aNode.getList();
-        int count = 0;
         TurtleNode countNode;
         countNode = aNode.getRepetitions();
-        count = getValue(countNode);
-        for(int i=0; i<count; i++)
+        for(int i=0; i<getValue(countNode); i++)
         {
             this.visit(repeatNodes);
         }
@@ -82,7 +80,7 @@ public class DistanceGenerator implements TurtleGenerator
     private int getValue(TurtleNode valueNode)
     {
         int value = 0;
-        if(valueNode instanceof  Constant)
+        if(valueNode instanceof Constant)
         {
             value = ((Constant)valueNode).getValue();
         }

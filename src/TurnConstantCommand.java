@@ -1,11 +1,11 @@
 /**
  * Created by cxj8923 on 4/11/15.
  */
-public class TurnCommand implements Command {
+public class TurnConstantCommand implements Command {
     private Turtle subject;
     private int degrees;
 
-    public TurnCommand(Turtle toTurn, int degrees)
+    public TurnConstantCommand(Turtle toTurn, int degrees)
     {
         subject = toTurn;
         this.degrees = degrees;
