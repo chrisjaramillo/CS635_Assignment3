@@ -20,7 +20,7 @@ public class TurtleParserTest {
         PrintWriter writer = new PrintWriter("testParser.txt", "UTF-8");
         writer.println("$length = 10");
         writer.println("penDown");
-        writer.println("move 10");
+        writer.println("move 12");
         writer.println("turn 90");
         writer.println("penUp");
         writer.close();
@@ -62,13 +62,20 @@ public class TurtleParserTest {
         assertTrue(testNode instanceof Variable);
         assertFalse(testNode instanceof Move);
         assertEquals("Variable name is not $length", "$length", ((Variable) testNode).getName());
-        assertEquals("Variable value is not 10", 10, ((Variable)testNode).getValue());
+        testNode = ((Variable) testNode).getValue();
+        assertTrue(testNode instanceof Constant);
+        assertEquals("Variable value is not 10", 10, ((Constant) testNode).getValue());
         testNode = testIterator.next();
         assertTrue(testNode instanceof PenDown);
         testNode = testIterator.next();
         assertTrue(testNode instanceof Move);
+        testNode = ((Move) testNode).getDistance();
+        assertTrue(testNode instanceof Constant);
+        assertEquals("Move value is not 12", 12, ((Constant) testNode).getValue());
         testNode = testIterator.next();
         assertTrue(testNode instanceof Turn);
+        testNode = ((Turn)testNode).getDegrees();
+        assertTrue(testNode instanceof Constant);
         testNode = testIterator.next();
         assertTrue(testNode instanceof PenUp);
     }

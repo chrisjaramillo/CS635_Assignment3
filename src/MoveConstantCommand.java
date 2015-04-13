@@ -1,16 +1,17 @@
 /**
  * Created by cxj8923 on 4/11/15.
  */
-public class MoveCommand implements Command {
+public class MoveConstantCommand implements Command {
     private Turtle subject;
-    int distance;
+    private int distance;
 
-    public MoveCommand(Turtle toMove, int distance)
+    public MoveConstantCommand(Turtle toMove, int distance)
     {
         subject = toMove;
         this.distance = distance;
     }
-    public void execute() {
+    public void execute()
+    {
         subject.move(distance);
     }
 

@@ -41,10 +41,17 @@ public class CommandGenerator implements TurtleGenerator {
     @Override
     public void visitMoveNode(Move aNode)
     {
-        int distance = 0;
         TurtleNode distanceNode = aNode.getDistance();
-        distance = getValue(distanceNode);
-        commandList.add(new MoveCommand(commandTurtle, distance));
+        if(distanceNode instanceof Constant)
+        {
+            int distance = ((Constant)distanceNode).getValue();
+            commandList.add(new MoveConstantCommand(commandTurtle, distance));
+        }
+        else if(distanceNode instanceof LookupVariable)
+        {
+            String variableName = ((LookupVariable)distanceNode).getVariableName();
+            commandList.add(new MoveVariableCommand(commandTurtle, variableName));
+        }
     }
 
     @Override
