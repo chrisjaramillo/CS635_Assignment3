@@ -88,10 +88,18 @@ public class CommandGenerator implements TurtleGenerator {
     @Override
     public void visitTurnNode(Turn aNode)
     {
-        int degrees = 0;
         TurtleNode degreesNode = aNode.getDegrees();
-        degrees = getValue(degreesNode);
-        commandList.add(new TurnConstantCommand(commandTurtle, degrees));
+        if(degreesNode instanceof Constant)
+        {
+            int degrees = 0;
+            degrees = ((Constant)degreesNode).getValue();
+            commandList.add(new TurnConstantCommand(commandTurtle, degrees));
+        }
+        else if(degreesNode instanceof LookupVariable)
+        {
+            String turnVariable = ((LookupVariable)degreesNode).getVariableName();
+            commandList.add(new TurnVariableCommand(commandTurtle, turnVariable));
+        }
     }
 
     @Override
@@ -99,8 +107,9 @@ public class CommandGenerator implements TurtleGenerator {
     {
         int value = 0;
         TurtleNode valueNode = aNode.getValue();
-        value = getValue(valueNode);
-        variables.put(aNode.getName(), value);
+        if(valueNode instanceof  Constant)
+        value = ((Constant)valueNode).getValue();
+        commandList.add(new VariableCommand(commandTurtle, aNode.getName(), value));
     }
 
     private int getValue(TurtleNode valueNode)

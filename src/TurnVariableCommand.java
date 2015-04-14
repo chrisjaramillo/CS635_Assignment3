@@ -6,6 +6,11 @@ public class TurnVariableCommand implements Command
     private String variableName;
     private Turtle subject;
 
+    TurnVariableCommand(Turtle toTurn, String variable)
+    {
+        variableName = variable;
+        subject = toTurn;
+    }
 
     @Override
     public void execute()

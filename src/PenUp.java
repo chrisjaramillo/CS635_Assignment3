@@ -17,6 +17,6 @@ public class PenUp implements TurtleNode{
 
     @Override
     public String toString() {
-        return "penUp";
+        return "penUp"  + System.getProperty("line.separator");
     }
 }

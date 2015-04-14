@@ -16,6 +16,6 @@ public class PenDown implements TurtleNode{
 
     public String toString()
     {
-        return "penDown";
+        return "penDown"  + System.getProperty("line.separator");
     }
 }

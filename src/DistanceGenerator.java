@@ -10,6 +10,11 @@ public class DistanceGenerator implements TurtleGenerator
     int distance;
     private HashMap<String, Integer> variables;
 
+    public DistanceGenerator()
+    {
+        variables = new HashMap<String, Integer>();
+    }
+
     public int visit(List<TurtleNode> nodeList)
     {
         for(TurtleNode node : nodeList)

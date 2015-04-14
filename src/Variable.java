@@ -32,6 +32,6 @@ public class Variable implements TurtleNode{
 
     @Override
     public String toString() {
-        return name + " = " + valueNode.toString();
+        return name + " = " + valueNode.toString()  + System.getProperty("line.separator");
     }
 }

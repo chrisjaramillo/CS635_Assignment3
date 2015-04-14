@@ -30,6 +30,6 @@ public class Move implements TurtleNode{
 
     public String toString()
     {
-        return "move " + distance.toString();
+        return "move " + distance.toString() + System.getProperty("line.separator");
     }
 }

@@ -30,6 +30,6 @@ public class Turn implements TurtleNode {
 
     @Override
     public String toString() {
-        return "turn " + degrees.toString();
+        return "turn " + degrees.toString()  + System.getProperty("line.separator");
     }
 }
