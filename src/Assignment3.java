@@ -60,6 +60,8 @@ public class Assignment3 {
         System.out.println(commandList);
         System.out.println(aTurtle.location());
         System.out.println(aTurtle.direction());
+        file = new File("testParser.txt");
+        file.delete();
 
 
     }
