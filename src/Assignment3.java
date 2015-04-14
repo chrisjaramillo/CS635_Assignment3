@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Created by cxj8923 on 4/13/15.
@@ -51,9 +50,9 @@ public class Assignment3 {
 
         aTurtle = new Turtle();
         CommandGenerator commandGenerator = new CommandGenerator(aTurtle);
-        List<Command> commandList = commandGenerator.visit(aList);
+        List<TurtleCommand> commandList = commandGenerator.visit(aList);
         System.out.println(commandList);
-        for(Command command : commandList)
+        for(TurtleCommand command : commandList)
         {
             command.execute();
         }

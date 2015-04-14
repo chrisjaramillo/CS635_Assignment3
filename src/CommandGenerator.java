@@ -7,17 +7,17 @@ import java.util.List;
  */
 public class CommandGenerator implements TurtleGenerator {
     private Turtle commandTurtle;
-    private List<Command> commandList;
+    private List<TurtleCommand> commandList;
     private HashMap<String, Integer> variables;
 
     public CommandGenerator(Turtle aTurtle)
     {
         commandTurtle = aTurtle;
-        commandList = new ArrayList<Command>();
+        commandList = new ArrayList<TurtleCommand>();
         variables = new HashMap<String, Integer>();
     }
 
-    public List<Command> visit(List<TurtleNode> nodeList)
+    public List<TurtleCommand> visit(List<TurtleNode> nodeList)
     {
         for(TurtleNode node : nodeList)
         {
@@ -70,7 +70,7 @@ public class CommandGenerator implements TurtleGenerator {
     public void visitRepeatNode(Repeat aNode)
     {
         CommandGenerator repeatGenerator = new CommandGenerator(commandTurtle);
-        List<Command> repeatCommands = repeatGenerator.visit(aNode.getList());
+        List<TurtleCommand> repeatCommands = repeatGenerator.visit(aNode.getList());
         TurtleNode countNode = aNode.getRepetitions();
         if(countNode instanceof Constant)
         {
@@ -110,19 +110,5 @@ public class CommandGenerator implements TurtleGenerator {
         if(valueNode instanceof  Constant)
         value = ((Constant)valueNode).getValue();
         commandList.add(new VariableCommand(commandTurtle, aNode.getName(), value));
-    }
-
-    private int getValue(TurtleNode valueNode)
-    {
-        int value = 0;
-        if(valueNode instanceof  Constant)
-        {
-            value = ((Constant)valueNode).getValue();
-        }
-        else if(valueNode instanceof LookupVariable)
-        {
-            value = variables.get(((LookupVariable)valueNode).getVariableName());
-        }
-        return value;
     }
 }

@@ -4,7 +4,8 @@ import java.util.List;
 /**
  * Created by Christopher Jaramillo on 4/10/15.
  */
-public class Repeat implements TurtleNode {
+public class Repeat implements TurtleNode
+{
     private TurtleNode repetitions;
     private List<TurtleNode> composite;
 

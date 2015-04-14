@@ -1,7 +1,7 @@
 /**
- * Created by cxj8923 on 4/12/15.
+ * Created by Christopher Jaramillo on 4/12/15.
  */
-public class MoveVariableCommand implements Command
+public class MoveVariableCommand implements TurtleCommand
 {
     private Turtle variableMove;
     private String variableName;
@@ -20,7 +20,8 @@ public class MoveVariableCommand implements Command
     }
 
     @Override
-    public void undo() {
+    public void undo()
+    {
 
     }
 }

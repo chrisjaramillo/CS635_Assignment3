@@ -1,7 +1,7 @@
 /**
  * Created by Christopher Jaramillo on 4/13/15.
  */
-public class TurnVariableCommand implements Command
+public class TurnVariableCommand implements TurtleCommand
 {
     private String variableName;
     private Turtle subject;

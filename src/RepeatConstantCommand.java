@@ -1,15 +1,15 @@
 import java.util.List;
 
 /**
- * Created by cxj8923 on 4/13/15.
+ * Created by Christopher Jaramillo on 4/13/15.
  */
-public class RepeatConstantCommand implements Command
+public class RepeatConstantCommand implements TurtleCommand
 {
-    private List<Command> commands;
+    private List<TurtleCommand> commands;
     private Turtle subject;
     private int repetitions;
 
-    RepeatConstantCommand(Turtle toRepeat, int count, List<Command> commands)
+    RepeatConstantCommand(Turtle toRepeat, int count, List<TurtleCommand> commands)
     {
         subject = toRepeat;
         repetitions = count;
@@ -21,7 +21,7 @@ public class RepeatConstantCommand implements Command
     {
         for(int i=0; i<repetitions; i++)
         {
-            for(Command command : commands)
+            for(TurtleCommand command : commands)
             {
                 command.execute();
             }
@@ -33,7 +33,7 @@ public class RepeatConstantCommand implements Command
     {
         for(int i=0; i<repetitions; i++)
         {
-            for(Command command : commands)
+            for(TurtleCommand command : commands)
             {
                 command.undo();
             }

@@ -1,7 +1,8 @@
 /**
- * Created by cxj8923 on 4/11/15.
+ * Created by Christopher Jaramillo on 4/11/15.
  */
-public class MoveConstantCommand implements Command {
+public class MoveConstantCommand implements TurtleCommand
+{
     private Turtle subject;
     private int distance;
 

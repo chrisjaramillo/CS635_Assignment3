@@ -5,7 +5,8 @@ import java.util.HashMap;
 /**
  * Created by Christopher on 4/8/2015.
  */
-public class Turtle {
+public class Turtle
+{
     private HashMap<String, Integer> variables;
     private int direction;
     private Point2D location;

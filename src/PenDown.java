@@ -1,7 +1,8 @@
 /**
- * Created by cxj8923 on 4/10/15.
+ * Created by Christopher Jaramillo on 4/10/15.
  */
-public class PenDown implements TurtleNode{
+public class PenDown implements TurtleNode
+{
     @Override
     public int evaluate(Turtle values)
     {

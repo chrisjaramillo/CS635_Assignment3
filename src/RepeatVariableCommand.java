@@ -1,15 +1,15 @@
 import java.util.List;
 
 /**
- * Created by cxj8923 on 4/13/15.
+ * Created by Christopher Jaramillo on 4/13/15.
  */
-public class RepeatVariableCommand implements Command
+public class RepeatVariableCommand implements TurtleCommand
 {
     private Turtle subject;
     private String variable;
-    private List<Command> commands;
+    private List<TurtleCommand> commands;
 
-    public RepeatVariableCommand(Turtle commandTurtle, String countVariable, List<Command> repeatCommands)
+    public RepeatVariableCommand(Turtle commandTurtle, String countVariable, List<TurtleCommand> repeatCommands)
     {
         subject = commandTurtle;
         variable = countVariable;
@@ -21,7 +21,7 @@ public class RepeatVariableCommand implements Command
     {
         for(int i=0; i<subject.getVariable(variable); i++)
         {
-            for(Command command : commands)
+            for(TurtleCommand command : commands)
             {
                 command.execute();
             }
@@ -33,7 +33,7 @@ public class RepeatVariableCommand implements Command
     {
         for(int i=0; i<subject.getVariable(variable); i++)
         {
-            for(Command command : commands)
+            for(TurtleCommand command : commands)
             {
                 command.undo();
             }

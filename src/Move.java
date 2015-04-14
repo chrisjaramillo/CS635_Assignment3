@@ -1,7 +1,8 @@
 /**
  * Created by Christopher Jaramillo on 4/10/15.
  */
-public class Move implements TurtleNode{
+public class Move implements TurtleNode
+{
     TurtleNode distance;
 
     public Move(TurtleNode aNode)

@@ -1,7 +1,8 @@
 /**
  * Created by Christopher Jaramillo on 4/11/15.
  */
-public class Constant implements TurtleNode {
+public class Constant implements TurtleNode
+{
     private int value;
 
     public Constant(String aValue)

@@ -1,5 +1,5 @@
 /**
- * Created by cxj8923 on 4/10/15.
+ * Created by Christopher Jaramillo on 4/10/15.
  */
 public class PenUp implements TurtleNode{
 
@@ -16,7 +16,8 @@ public class PenUp implements TurtleNode{
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "penUp"  + System.getProperty("line.separator");
     }
 }

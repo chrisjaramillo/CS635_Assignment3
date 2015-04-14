@@ -1,7 +1,8 @@
 /**
- * Created by cxj8923 on 4/11/15.
+ * Created by Christopher Jaramillo on 4/11/15.
  */
-public interface TurtleGenerator {
+public interface TurtleGenerator
+{
     void visitConstantNode(Constant aNode);
     void visitLookupVariableNode(LookupVariable aNode);
     void visitMoveNode(Move aNode);

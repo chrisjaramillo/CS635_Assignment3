@@ -1,12 +1,11 @@
 /**
- * Created by cxj8923 on 4/13/15.
+ * Created by Christopher Jaramillo on 4/13/15.
  */
-public class VariableCommand implements Command
+public class VariableCommand implements TurtleCommand
 {
     private Turtle subject;
     private String name;
     private int value;
-    private int oldValue;
 
     VariableCommand(Turtle variableHolder, String variableName, int variableValue)
     {

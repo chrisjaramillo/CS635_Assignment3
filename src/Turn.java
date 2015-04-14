@@ -1,7 +1,8 @@
 /**
- * Created by cxj8923 on 4/10/15.
+ * Created by Christopher Jaramillo on 4/10/15.
  */
-public class Turn implements TurtleNode {
+public class Turn implements TurtleNode
+{
     TurtleNode degrees;
 
     public Turn(TurtleNode aNode)
